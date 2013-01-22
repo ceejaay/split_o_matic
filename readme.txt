@@ -7,4 +7,5 @@ The text in the document looked like this:
 
 Second: string_parse.rb: So I wrote the method string_breakdown to break down each line of the text document into an array of hashes. I used a few regex's to break the strings up. I converted the lines of text into strings where I wanted strings. The names of games and consoles were strings. The number of the games and the year became integers.
 
-Third: nintendo_games.db. This is a SQLite3 database with all the games listed in it. I wrote the string_breakdown method and loaded it into the irb. I also used the SQLite gem. I used these tools to convert the text file into a database.
+
+Third: nintendo_games.db: This is an SQLite3 database with all the games listed in it. I wrote the string_breakdown method and loaded it into the irb. I also used the SQLite gem. I used these tools to convert the text file into a format that could be easily put into the database. I did the final steps by hand. Writing out the code in the irb.
