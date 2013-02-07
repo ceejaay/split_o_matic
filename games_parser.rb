@@ -12,22 +12,12 @@ class GamesParser
   end
 
   def parse_line(line)
-    hash = Hash.new
-    string_number = ''
-    string_year = ''
-    string_year = line.slice!(/\d{4}/)
-    hash[:year] = string_year.to_i
-    line.slice!(/:{1}/)
-    string_number = line.slice!(/\A\d+/)
-    hash[:number] = string_number.to_i
-    line.slice!("(")
-    line.slice!(")")
-    line.slice!(",")
-    hash[:console] = line.slice!(/GBA|NES|SNES|GameCube|DS|Wii|N64|3DS|DSiWare|GameBoy|GameBoy Color|DSiWare|Virtual Console/ )
-    line.lstrip!
-    line.rstrip!
-    hash[:title] = line
-    hash
+    matching = line.match(/^(\d*): (.*) \((.*), (\d*)\)/)
+    return if matching.nil? or matching.length < 5 # we should ideally throw an exception
+
+    game = Hash.new
+    game[:number], game[:title], game[:consoles], game[:year] = matching[1], matching[2], matching[3].split(','), matching[4]
+    game
   end
 end
 
